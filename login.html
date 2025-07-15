@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تسجيل الدخول / إنشاء حساب - CodeVision</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #1a1a1a;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #a259ff;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ccc;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #2e2e2e;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .form-group input:focus {
+      outline: 2px solid #a259ff;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background-color: #a259ff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #8a38e8;
+    }
+
+    .switch-link {
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .switch-link a {
+      color: #888;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .switch-link a:hover {
+      color: #a259ff;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- نموذج تسجيل الدخول -->
+    <div id="login-form">
+      <h2>تسجيل الدخول</h2>
+      <form>
+        <div class="form-group">
+          <label for="login-email">البريد الإلكتروني</label>
+          <input type="email" id="login-email" placeholder="example@codevision.com" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">كلمة المرور</label>
+          <input type="password" id="login-password" placeholder="********" required>
+        </div>
+        <button class="btn" type="submit">دخول</button>
+        <div class="switch-link">
+          <span>ليس لديك حساب؟ <a onclick="toggleForms()">إنشاء حساب</a></span>
+        </div>
+      </form>
+    </div>
+
+    <!-- نموذج إنشاء حساب -->
+    <div id="register-form" class="hidden">
+      <h2>إنشاء حساب جديد</h2>
+<form>
+        <div class="form-group">
+          <label for="reg-name">الاسم الكامل</label>
+          <input type="text" id="reg-name" placeholder="اسمك الكامل" required>
+        </div>
+        <div class="form-group">
+          <label for="reg-email">البريد الإلكتروني</label>
+          <input type="email" id="reg-email" placeholder="example@codevision.com" required>
+        </div>
+        <div class="form-group">
+          <label for="reg-password">كلمة المرور</label>
+          <input type="password" id="reg-password" placeholder="********" required>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">تأكيد كلمة المرور</label>
+          <input type="password" id="confirm-password" placeholder="********" required>
+        </div>
+        <button class="btn" type="submit">تسجيل</button>
+        <div class="switch-link">
+          <span>لديك حساب؟ <a onclick="toggleForms()">تسجيل الدخول</a></span>
+        </div>
+      </form>
+      <script>
+  function toggleForms() {
+    document.getElementById('login-form').classList.toggle('hidden');
+    document.getElementById('register-form').classList.toggle('hidden');
+  }
+
+  // تسجيل الدخول
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    // تحقق بسيط (تقدر تغيره حسب البيانات الحقيقية لاحقًا)
+    if (email === "admin@codevision.com" && password === "1234") {
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "index.html"; // دخول للصفحة الرئيسية
+    } else {
+      alert("البريد أو كلمة المرور غير صحيحة");
+    }
+  });
+</script>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleForms() {
+      document.getElementById('login-form').classList.toggle('hidden');
+      document.getElementById('register-form').classList.toggle('hidden');
+    }
+  </script>
+
+</body>
+</html>
